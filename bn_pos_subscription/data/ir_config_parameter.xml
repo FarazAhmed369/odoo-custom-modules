@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ========================= -->
+    <!-- Core Subscription Info -->
+    <!-- ========================= -->
+
+    <record id="pos_subscription_license_key" model="ir.config_parameter">
+        <field name="key">pos_subscription.license_key</field>
+        <field name="value">okok</field>
+    </record>
+
+    <record id="pos_subscription_status" model="ir.config_parameter">
+        <field name="key">pos_subscription.status</field>
+        <field name="value">trial</field>
+    </record>
+
+    <record id="pos_subscription_type" model="ir.config_parameter">
+        <field name="key">pos_subscription.subscription_type</field>
+        <field name="value">trial</field>
+    </record>
+
+    <record id="pos_subscription_expiry_date" model="ir.config_parameter">
+        <field name="key">pos_subscription.expiry_date</field>
+        <field name="value">2026-01-31</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- Trial Management -->
+    <!-- ========================= -->
+
+    <record id="pos_subscription_trial_start_date" model="ir.config_parameter">
+        <field name="key">pos_subscription.trial_start_date</field>
+        <field name="value">2026-01-20</field>
+    </record>
+
+    <record id="pos_subscription_trial_days" model="ir.config_parameter">
+        <field name="key">pos_subscription.trial_days</field>
+        <field name="value">14</field>
+    </record>
+
+    <record id="pos_subscription_trial_used" model="ir.config_parameter">
+        <field name="key">pos_subscription.trial_used</field>
+        <field name="value">true</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- API & Sync -->
+    <!-- ========================= -->
+
+    <record id="pos_subscription_api_base_url" model="ir.config_parameter">
+        <field name="key">pos_subscription.api_base_url</field>
+        <field name="value">false</field>
+    </record>
+
+    <record id="pos_subscription_last_sync_at" model="ir.config_parameter">
+        <field name="key">pos_subscription.last_sync_at</field>
+        <field name="value">false</field>
+    </record>
+
+    <record id="pos_subscription_sync_status" model="ir.config_parameter">
+        <field name="key">pos_subscription.sync_status</field>
+        <field name="value">pending</field>
+    </record>
+
+    <!-- ========================= -->
+    <!-- POS Behavior Control -->
+    <!-- ========================= -->
+
+    <record id="pos_subscription_block_pos" model="ir.config_parameter">
+        <field name="key">pos_subscription.block_pos</field>
+        <field name="value">false</field>
+    </record>
+
+    <record id="pos_subscription_block_reason" model="ir.config_parameter">
+        <field name="key">pos_subscription.block_reason</field>
+        <field name="value">false</field>
+    </record>
+
+    <record id="pos_subscription_warning_days" model="ir.config_parameter">
+        <field name="key">pos_subscription.warning_days</field>
+        <field name="value">7</field>
+    </record>
+
+
+</odoo>

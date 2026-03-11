@@ -1,0 +1,12 @@
+<odoo>
+    <record id="ir_cron_wasabi_auto_import" model="ir.cron">
+        <field name="name">Wasabi Auto Import</field>
+        <field name="model_id" ref="model_wasabi_auto_import"/>
+        <field name="state">code</field>
+        <field name="code">model.auto_import_from_wasabi()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

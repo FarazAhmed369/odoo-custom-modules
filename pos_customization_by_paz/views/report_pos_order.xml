@@ -1,0 +1,22 @@
+<odoo>
+    <record id="report_pos_order_pivot_inherit" model="ir.ui.view">
+        <field name="name">report.pos.order.pivot.inherit</field>
+        <field name="model">report.pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_report_pos_order_pivot" />
+        <field name="arch" type="xml">
+            <xpath expr="//pivot/field[@name='product_categ_id']" position="before">
+                <field name="parent_product_categ_id" type="row"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="report_pos_order_search_inherit" model="ir.ui.view">
+        <field name="name">report.pos.order.search.inherit</field>
+        <field name="model">report.pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_report_pos_order_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//search/group" position="inside">
+                <filter string="Parent Category" name="group_by_parent_category" context="{'group_by':'parent_product_categ_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,30 @@
+<odoo>
+    <record id="view_picking_form_aramex" model="ir.ui.view">
+        <field name="name">stock.picking.form.aramex</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+    
+            <xpath expr="//header" position="inside">
+    
+                <button name="action_sync_aramex_transfer"
+                        type="object"
+                        string="Sync Aramex Transfer"
+                        class="btn-primary"/>
+    
+            </xpath>
+    
+        </field>
+    </record>
+
+    <record id="action_sync_multi_aramex_transfer" model="ir.actions.server">
+        <field name="name">Sync Aramex Transfer</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            records.action_sync_multi_aramex_transfer()
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,53 @@
+<odoo>
+
+    <record id="view_product_form_aramex" model="ir.ui.view">
+        <field name="name">product.template.form.aramex</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Aramex Sync">
+                    <group>
+                        <!-- <field name="arx_facility"/> -->
+                        <!-- <field name="arx_hs_code"/> -->
+                        <!-- <field name="arx_storer_key"/> -->
+                        <!-- <field name="arx_collection"/>
+                        <field name="arx_color"/>
+                        <field name="arx_country_origin"/>
+                        <field name="arx_cost"/>
+                        <field name="arx_price"/> -->
+                        <!-- <field name="arx_serial_count"/> -->
+                        <!-- <field name="arx_serial_length"/>
+                        <field name="arx_manufacturer_sku"/>
+                        <field name="arx_upc"/>
+                        <field name="arx_upc_uom"/> -->
+                    </group>
+
+                    <group>
+                        <field name="arx_sync_status" readonly="1"/>
+                        <field name="arx_last_sync_date" readonly="1"/>
+                        <field name="arx_last_response" readonly="1"/>
+                    </group>
+
+                    <button name="action_sync_aramex"
+                            string="Sync to Aramex"
+                            type="object"
+                            class="btn-primary"/>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="action_product_sync_aramex_multi" model="ir.actions.server">
+        <field name="name">Sync to Aramex</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            records.action_sync_multi_aramex()
+        </field>
+    </record>
+
+</odoo>

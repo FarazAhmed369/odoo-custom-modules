@@ -1,0 +1,15 @@
+{
+    "name": "POS Order Customization",
+    "summary": "",
+    "description": "",
+    "author": "Faraz Ahmed",
+    "version": "1.0",
+    "sequence": 1,
+    "category": "Point of Sale",
+    "depends": ["point_of_sale", "web", "l10n_gcc_invoice","product"],
+    "data": ['views/report_pos_order.xml',],
+    "installable": True,
+    "application": False,
+    "auto_install": False,
+    "license": "LGPL-3",
+}

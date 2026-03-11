@@ -1,0 +1,60 @@
+<odoo>
+
+    <record id="view_res_config_settings_aramex" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.aramex</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//form" position="inside">
+                <app string="Aramex Integration" name="aramex_integration">
+                    <block title="Aramex API Configuration">
+                        <setting string="Aramex API URL">
+                            <field name="aramex_url"/>
+                        </setting>
+
+                        <setting string="SSA Login">
+                            <field name="aramex_ssa_login"/>
+                        </setting>
+
+                        <setting string="SSA Password">
+                            <field name="aramex_ssa_password" password="True"/>
+                        </setting>
+                        <setting string="Facility">
+                            <field name="arx_facility"/>
+                        </setting>
+                        <setting string="Storer Key">
+                            <field name="arx_storer_key"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
+
+<!-- <odoo>
+
+    <record id="res_config_settings_view_aramex" model="ir.ui.view">
+        <field name="name">res.config.settings.aramex</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" string="Aramex API">
+                    <h2>Aramex Configuration</h2>
+                    <group>
+                        <field name="aramex_url"/>
+                        <field name="aramex_ssa_login"/>
+                        <field name="aramex_ssa_password"/>
+                    </group>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo> -->
