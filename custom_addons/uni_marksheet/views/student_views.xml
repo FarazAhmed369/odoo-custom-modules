@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="view_student_form" model="ir.ui.view">
+    <field name="name">Student Form</field>
+    <field name="model">uni_marksheet.student</field>
+    <field name="arch" type="xml">
+      <form string="Student">
+        <sheet>
+          <group>
+            <field name="std_image" widget="image"/>
+            <field name="name"/>
+            <field name="father_name"/>
+            <field name="dob"/>
+            <field name="address"/>
+            <field name="roll_no"/>
+            <field name="age"/>
+            <field name="university_id"/>
+<!--            <field name="course_ids"/>-->
+          </group>
+          <group>
+            <field name="marks_obtained"/>
+            <field name="total_marks"/>
+            <field name="percentage" readonly="1"/>
+            <field name="grade" readonly="1"/>
+            <field name="gpa" readonly="1"/>
+          </group>
+          <group string="Subject Marks">
+            <field name="subject_line_ids">
+              <tree editable="bottom">
+                <field name="subject_name"/>
+                <field name="sessional_max" readonly="1"/>
+                <field name="sessional_obt"/>
+                <field name="theory_max" readonly="1"/>
+                <field name="theory_obt"/>
+                <field name="total_max" readonly="1"/>
+                <field name="total_obtain"/>
+<!--                <field name="grand_total" readonly="1"/>-->
+                <field name="grade" readonly="1"/>
+                <field name="gpa" readonly="1"/>
+              </tree>
+            </field>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_student_list" model="ir.ui.view">
+    <field name="name">Student List</field>
+    <field name="model">uni_marksheet.student</field>
+    <field name="arch" type="xml">
+      <tree string="Students">
+        <field name="name"/>
+        <field name="roll_no"/>
+        <field name="university_id"/>
+<!--        <field name="percentage"/>-->
+<!--        <field name="grade"/>-->
+<!--        <field name="gpa"/>-->
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_student" model="ir.actions.act_window">
+    <field name="name">Students</field>
+    <field name="res_model">uni_marksheet.student</field>
+    <field name="view_mode">list,form</field>
+  </record>
+
+  <menuitem id="menu_uni_root" name="University Management"/>
+  <menuitem id="menu_student" name="Students" parent="menu_uni_root" action="action_student"/>
+</odoo>

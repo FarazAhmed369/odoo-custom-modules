@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="custom_layout">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+
+        <div class="header">
+            <div class="text-center" style="border-bottom: 1px solid black;">
+<!--                <h1>Custom Header</h1>-->
+                <div class="row">
+                    <div class="col-3 mb4">
+                        <img alt="img" t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height:120px;max-width:120px;"/>
+                    </div>
+                    <div class="col-9 text-right">
+                        <span t-if="company.company_details" t-field="company.company_details" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard">
+            <t t-out="0" />
+        </div>
+        <div class="footer o_standard_footer">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <h1>Custom Footer</h1>
+            </div>
+        </div>
+    </template>
+
+    <template id="student_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="custom_header_footer_pdf.custom_layout">
+                    <h1 t-field="doc.name"/>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <record id="student_profile_report_template" model="ir.actions.report">
+        <field name="name">Custom Student Card</field>
+        <field name="model">faraz_std.student</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">custom_header_footer_pdf.student_report_template</field>
+        <field name="report_file">custom_header_footer_pdf.student_report_template</field>
+        <field name="print_report_name">'Student-Card'</field>
+        <field name="binding_model_id" ref="faraz_std.model_faraz_std_student"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

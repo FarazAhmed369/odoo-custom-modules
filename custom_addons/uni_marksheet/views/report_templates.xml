@@ -1,0 +1,105 @@
+<odoo>
+  <template id="report_marksheet_template">
+    <xpath expr="." position="replace">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+          <div class="page" style="padding:50px 60px; font-family:'DejaVu Sans'; font-size:12pt;"
+             t-attf-style="page-break-after:#{'always' if not doc == docs[-1] else 'auto'}; padding:50px 60px; font-family:'DejaVu Sans'; font-size:12pt;">
+
+              <!-- 🏫 University Info -->
+              <div style="text-align:center; margin-bottom:30px;">
+                <t t-if="doc.university_id.logo">
+                  <img t-att-src="'data:image/png;base64,%s' % doc.university_id.logo.decode('utf-8')" width="90" style="margin-bottom:10px;" />
+                </t>
+                <h2 style="margin:5px 0;"><b><span t-field="doc.university_id.name"/></b></h2>
+                <p style="margin:2px 0;"><span t-field="doc.university_id.address"/></p>
+                <p style="margin:2px 0;">
+                  <strong>Phone:</strong> <span t-field="doc.university_id.phone"/> |
+                  <strong>Email:</strong> <span t-field="doc.university_id.email"/> |
+                  <strong>Website:</strong> <span t-field="doc.university_id.website"/>
+                </p>
+                <h4 style="margin-top:12px;">Annual Examination Result</h4>
+              </div>
+              <hr style="margin-bottom:25px;" />
+
+              <!-- 👨‍🎓 Student Info -->
+              <div style="margin-bottom:35px;">
+                <table style="width:100%; font-size:12pt;">
+                  <tr style="height:30px;">
+                    <td><strong>Student Name:</strong> <span t-field="doc.name"/></td>
+                    <td><strong>Father Name:</strong> <span t-field="doc.father_name"/></td>
+                    <td><strong>Roll No:</strong> <span t-field="doc.roll_no"/></td>
+                  </tr>
+                  <tr style="height:30px;">
+                    <td><strong>DOB:</strong> <span t-field="doc.dob"/></td>
+                    <td><strong>Age:</strong> <span t-field="doc.age"/> yrs</td>
+                    <td><strong>Address:</strong> <span t-field="doc.address"/></td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- 📚 Marks Table -->
+              <h4 style="text-align:center; margin-bottom:15px;">Subject Marks</h4>
+              <table style="width:100%; border-collapse: collapse; border:1px solid black; text-align:center; font-size:12pt; margin-bottom:35px;">
+                <thead style="background-color:#f0f0f0;">
+                  <tr style="height:40px;">
+                    <th style="border:1px solid black;">Subject</th>
+                    <th style="border:1px solid black;">Sessional Max</th>
+                    <th style="border:1px solid black;">Sessional Obt.</th>
+                    <th style="border:1px solid black;">Theory Max</th>
+                    <th style="border:1px solid black;">Theory Obt.</th>
+                    <th style="border:1px solid black;">Total Max</th>
+                    <th style="border:1px solid black;">Total Obt.</th>
+                    <th style="border:1px solid black;">Grade</th>
+                    <th style="border:1px solid black;">GPA</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <t t-foreach="doc.subject_line_ids" t-as="line">
+                    <tr style="height:35px;">
+                      <td style="border:1px solid black;"><span t-field="line.subject_name.name"/></td>
+                      <td style="border:1px solid black;"><span t-field="line.sessional_max"/></td>
+                      <td style="border:1px solid black;"><span t-field="line.sessional_obt"/></td>
+                      <td style="border:1px solid black;"><span t-field="line.theory_max"/></td>
+                      <td style="border:1px solid black;"><span t-field="line.theory_obt"/></td>
+                      <td style="border:1px solid black;"><span t-field="line.total_max"/></td>
+                      <td style="border:1px solid black;"><span t-field="line.total_obtain"/></td>
+                      <td style="border:1px solid black;"><span t-field="line.grade"/></td>
+                      <td style="border:1px solid black;"><span t-field="line.gpa"/></td>
+                    </tr>
+                  </t>
+                </tbody>
+              </table>
+
+              <!-- 📊 Totals Section -->
+              <div style="margin-bottom:50px;">
+                <table style="width:100%; font-size:12pt;">
+                  <tr style="height:30px;">
+                    <td><strong>Grand Total Marks:</strong> <span t-field="doc.grand_total_marks"/></td>
+                    <td><strong>Grand Obtained:</strong> <span t-field="doc.grand_obtained_marks"/></td>
+                    <td><strong>Grand Percentage:</strong> <span t-field="doc.grand_percentage"/>%</td>
+                  </tr>
+                  <tr style="height:30px;">
+                    <td><strong>Grand Grade:</strong> <span t-field="doc.grand_grade"/></td>
+                    <td><strong>Grand GPA:</strong> <span t-field="doc.grand_gpa"/></td>
+                    <td><strong>Issue Date:</strong> <span t-field="doc.create_date" t-options="{'widget': 'date'}"/></td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- 📝 Signature Section -->
+              <div style="margin-top:60px;">
+                <table style="width:100%; text-align:center;">
+                  <tr>
+                    <td style="width:33%;"><p>____________________<br/>Parent / Guardian</p></td>
+                    <td style="width:33%;"><p>____________________<br/>Class Teacher</p></td>
+                    <td style="width:33%;"><p>____________________<br/>Principal Sign &amp; Stamp</p></td>
+                  </tr>
+                </table>
+              </div>
+          </div>
+        </t>
+      </t>
+    </xpath>
+  </template>
+</odoo>
