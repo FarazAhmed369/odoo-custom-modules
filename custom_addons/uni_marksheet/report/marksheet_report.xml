@@ -1,0 +1,11 @@
+<odoo>
+  <record id="action_student_marksheet" model="ir.actions.report">
+    <field name="name">Student Marksheet</field>
+    <field name="model">uni_marksheet.student</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">uni_marksheet.report_marksheet_template</field>
+    <field name="report_file">uni_marksheet.report_marksheet_template</field>
+    <field name="print_report_name">'Marksheet - %s' % (object.name)</field>
+    <field name="binding_model_id" ref="uni_marksheet.model_uni_marksheet_student"/>
+  </record>
+</odoo>

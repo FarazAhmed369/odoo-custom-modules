@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_uni_marksheet_course,uni_marksheet.course,model_uni_marksheet_course,base.group_user,1,1,1,1
+access_uni_marksheet_student,uni_marksheet.student,model_uni_marksheet_student,base.group_user,1,1,1,1
+access_uni_marksheet_university,uni_marksheet.university,model_uni_marksheet_university,base.group_user,1,1,1,1
+access_uni_marksheet_subject_line,uni_marksheet.subject.line,model_uni_marksheet_subject_line,base.group_user,1,1,1,1

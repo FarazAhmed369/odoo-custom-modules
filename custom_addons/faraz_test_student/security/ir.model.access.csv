@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_faraz_test_student,faraz.test_student,model_faraz_test_student,base.group_user,1,1,1,1

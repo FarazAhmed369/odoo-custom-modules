@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <record id="view_university_form" model="ir.ui.view">
+    <field name="name">University Form</field>
+    <field name="model">uni_marksheet.university</field>
+    <field name="arch" type="xml">
+      <form string="University">
+        <sheet>
+          <group>
+            <field name="logo" widget="image"/>
+            <field name="name"/>
+            <field name="address"/>
+            <field name="phone"/>
+            <field name="email"/>
+            <field name="website"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_university_tree" model="ir.ui.view">
+    <field name="name">University List</field>
+    <field name="model">uni_marksheet.university</field>
+    <field name="arch" type="xml">
+      <tree string="University">
+        <field name="name"/>
+        <field name="address"/>
+        <field name="phone"/>
+        <field name="email"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_university" model="ir.actions.act_window">
+    <field name="name">Universities</field>
+    <field name="res_model">uni_marksheet.university</field>
+    <field name="view_mode">list,form</field>
+  </record>
+
+  <menuitem id="menu_uni_root" name="University Management"/>
+  <menuitem id="menu_university" name="Universities" parent="menu_uni_root" action="action_university"/>
+</odoo>

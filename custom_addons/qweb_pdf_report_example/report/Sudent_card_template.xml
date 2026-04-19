@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <template id="student_card_report">
+        <t t-call="web.basic_layout">
+            <div class="page">
+               <t t-set="counter" t-value="0"/>
+                    <t t-foreach="docs" t-as="student">
+                      <t t-set="counter" t-value="counter + 1"/>
+
+                      <div style="width:48%; display:inline-block; vertical-align:top; margin:1%; padding:5pt;">
+                        <div style="width:300pt; min-height:140pt; border:2pt solid black; border-radius:10pt; margin:10pt auto; padding:10pt; background:#fff; box-sizing:border-box; font-family:Arial;">
+
+                          <!-- Company Name -->
+                          <h2 style="text-align:center; color:dark-grey; margin:0 0 10pt 0;">Paz Technology</h2>
+
+                          <!-- Top Row: Image -->
+                          <div style="display:flex; align-items:flex-start;">
+                            <!-- Image -->
+<!--                            <img t-if="student.std_image"-->
+<!--                                 t-att-src="'/web/image?model=faraz_std.student&amp;id=%s&amp;field=std_image' % student.id"-->
+<!--                                 style="width:70pt; height:70pt; border-radius:5pt; object-fit:cover; margin-top:20pt; margin-right:20pt;" alt="Student Image"/>-->
+<!--                            <span t-if="not student.std_image" style="width:70pt; height:70pt; background:#ccc; display:inline-block; margin-right:20pt;"></span>-->
+
+                            <!-- Barcode topic -->
+<!--                              QR, EAN13, EAN8, Code128, UPCA-->
+<!--                              <img src="/report/barcode/QR/Hello world" width = "80" height = "80" alt = "Barcode"/>-->
+<!--                              <img t-att-src="'/report/barcode/QR/%s-%s'%(student.name,student.roll_no)" width = "80" height = "80" alt = "Barcode"/>-->
+<!--                              <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'Q %('R',student.name,100,100)" width="100" height="100" alt="Barcode"/> <- This line is not working properly-->
+<!--                              <img t-att-src="'/report/barcode/EAN13/%s-%s'%(student.name,student.roll_no)" width = "200" height = "50" alt = "Barcode"/>-->
+<!--                              <img t-att-src="'/report/barcode/EAN8/%s-%s'%(student.name,student.roll_no)" width = "200" height = "50" alt = "Barcode"/>-->
+<!--                              <img t-att-src="'/report/barcode/Code128/%s-%s'%(student.name,student.roll_no)" width = "200" height = "50" alt = "Barcode"/>-->
+<!--                              <img t-att-src="'/report/barcode/UPCA/%s-%s'%(student.name,student.roll_no)" width = "200" height = "50" alt = "Barcode"/>-->
+<!--                              <div t-field="student.name" t-options="{'widget':'barcode','symbology':'QR','width':100,'height':100, 'img_style':'width:80;ptheight:80pt;'}"/>-->
+
+<!--                              Static Images topic-->
+
+<!--                              <img src="/qweb_pdf_report_example/static/description/boat.png" alt="The image is not uploaded..." width="80" height="80"/>-->
+<!--                                <img src="data:image/jpeg;base64,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" alt="The image is not uploaded..." width="80" height="80"/>-->
+<!--                                <img src="/qweb_pdf_report_example/static/description/boat.png" alt="The image is not uploaded..." width="80" height="80"/>-->
+<!--                              Dynamic Images topics-->
+
+<!--                              <img t-att-src="image_data_uri(student.std_image)"-->
+<!--                                  t-if="student.std_image"-->
+<!--                                  width="80" height="80"
+                                      alt="Not Found"/>-->
+
+<!--                              <img t-attf-src="data:image/gif;base64,#{student.std_image}"-->
+<!--                                  t-if="student.std_image"-->
+<!--                                  alt="Not Found"-->
+<!--                                  width="80" height="80" />-->
+<!--                              <div t-field="student.std_image"-->
+<!--                                    t-options="{'widget':'image','img_style':'width:80px;height:80px;','width':80,'height':80}"-->
+<!--                              />-->
+
+                          </div>
+
+                          <!-- Info Section -->
+                          <div style="margin-top:0; padding-left:100pt">
+                              <p style="margin:4pt 0;"><strong>Name:</strong><t t-esc="student.name"/></p>
+                              <p style="margin:4pt 0;"><strong>School:</strong> <t t-esc="student.school_id.name"/></p>
+                              <p style="margin:4pt 0;"><strong>Roll No:</strong> <t t-esc="student.roll_no"/></p>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <!-- Page Break After Every 2 Cards -->
+                      <t t-if="counter % 2 == 0">
+                        <div style="page-break-after:always;"></div>
+                      </t>
+                    </t>
+
+            </div>
+        </t>
+    </template>
+
+    <record id="student_profile_card_rep" model="ir.actions.report">
+        <field name="name">Student Card Print</field>
+        <field name="model">faraz_std.student</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">qweb_pdf_report_example.student_card_report</field>
+        <field name="report_file">qweb_pdf_report_example.student_card_report</field>
+        <field name="print_report_name">'Student Card'</field>
+        <field name="binding_model_id" ref="faraz_std.model_faraz_std_student"/>
+        <field name="binding_type">report</field>
+
+    </record>
+</odoo>
